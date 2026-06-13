@@ -1,0 +1,66 @@
+import { useMemo, useState } from 'react'
+import { courses } from '../../data/courses'
+import { getCourseTitle } from '../../utils/courseHelpers'
+import Button from '../ui/Button'
+import CourseCard from '../ui/CourseCard'
+import SearchInput from '../ui/SearchInput'
+import SectionHeader from '../ui/SectionHeader'
+
+const INITIAL_COUNT = 6
+
+// Catálogo completo con buscador ancho y cards compactas
+export default function AllCourses() {
+  const [query, setQuery] = useState('')
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT)
+
+  const filtered = useMemo(() => {
+    const q = query.toLowerCase().trim()
+    if (!q) return courses
+    return courses.filter((course) =>
+      getCourseTitle(course).toLowerCase().includes(q),
+    )
+  }, [query])
+
+  const visible = filtered.slice(0, visibleCount)
+  const hasMore = visibleCount < filtered.length
+
+  return (
+    <section id="todos-cursos" className="bg-comefyr-soft section-padding">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeader
+          title="Todos los cursos"
+          subtitle="Explora nuestro catálogo completo de formación médica continua."
+        />
+
+        <SearchInput
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value)
+            setVisibleCount(INITIAL_COUNT)
+          }}
+          placeholder="Buscar curso por nombre…"
+          ariaLabel="Buscar curso por nombre"
+          className="mb-10"
+        />
+
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {visible.map((course) => (
+            <CourseCard key={course.id} course={course} variant="compact" />
+          ))}
+        </div>
+
+        {filtered.length === 0 && (
+          <p className="text-center text-comefyr-muted">No se encontraron cursos.</p>
+        )}
+
+        {hasMore && (
+          <div className="mt-10 text-center">
+            <Button onClick={() => setVisibleCount((n) => n + 3)} size="lg">
+              Cargar más
+            </Button>
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}
