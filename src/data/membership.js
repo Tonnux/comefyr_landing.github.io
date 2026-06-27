@@ -2,7 +2,7 @@
 export const membershipSection = {
   title: 'Membresía COMEFYR 2026',
   subtitle:
-    'Forma parte de nuestra comunidad médica profesional y accede a beneficios académicos, eventos, diplomados y actividades exclusivas para asociados.',
+    'Forma parte de nuestra comunidad médica y accede a beneficios académicos, diplomados y actividades exclusivas para asociados.',
 }
 
 export const membershipPlans = [

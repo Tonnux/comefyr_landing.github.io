@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { Mail, MapPin, MessageCircle } from 'lucide-react'
+import { Mail, MapPin, MessageCircle, ShieldCheck } from 'lucide-react'
 import { contactInfo, contactSection } from '../../data/contact'
+import { sectionEyebrows } from '../../data/siteContent'
+import { useInView } from '../../hooks/useInView'
 import Button from '../ui/Button'
 import FormSuccess from '../ui/FormSuccess'
 import Input from '../ui/Input'
@@ -11,6 +13,7 @@ export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
   const [captchaChecked, setCaptchaChecked] = useState(false)
   const [captchaError, setCaptchaError] = useState(false)
+  const [ref, isInView] = useInView()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -29,14 +32,18 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contacto" className="bg-comefyr-soft section-padding">
+    <section id="contacto" className="bg-white section-padding">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
+          eyebrow={sectionEyebrows.contact}
           title={contactSection.title}
           subtitle={contactSection.subtitle}
         />
 
-        <div className="overflow-hidden rounded-card-lg border border-gray-100 bg-white shadow-card">
+        <div
+          ref={ref}
+          className={`fade-in-section overflow-hidden rounded-card-lg border border-comefyr-blue/8 bg-white shadow-card ${isInView ? 'is-visible' : ''}`}
+        >
           <div className="grid lg:grid-cols-5">
             <div className="p-6 sm:p-10 lg:col-span-3 lg:border-r lg:border-gray-100">
               {submitted ? (
@@ -54,10 +61,13 @@ export default function ContactSection() {
                   <Input label="Mensaje" name="mensaje" as="textarea" required />
 
                   {/* TODO: Reemplazar captcha temporal por reCAPTCHA/hCaptcha cuando se conecte backend. */}
-                  <div className="rounded-xl border border-gray-200 bg-comefyr-soft px-4 py-4 sm:px-5">
-                    <p className="text-sm font-semibold text-comefyr-blue">
-                      Verificación de seguridad
-                    </p>
+                  <div className="rounded-xl border border-comefyr-blue/10 bg-comefyr-soft/80 px-4 py-4 sm:px-5">
+                    <div className="flex items-center gap-2">
+                      <ShieldCheck className="h-4 w-4 text-comefyr-blue" aria-hidden="true" />
+                      <p className="text-sm font-semibold text-comefyr-blue">
+                        Verificación de seguridad
+                      </p>
+                    </div>
                     <label className="mt-3 flex cursor-pointer items-start gap-3">
                       <input
                         type="checkbox"
@@ -82,35 +92,46 @@ export default function ContactSection() {
               )}
             </div>
 
-            <div className="space-y-1 bg-comefyr-ice/30 p-6 sm:p-10 lg:col-span-2">
-              <ContactItem
-                icon={MessageCircle}
-                label={contactInfo.whatsapp.label}
-                value={contactInfo.whatsapp.value}
-                href={contactInfo.whatsapp.href}
-              />
-              <ContactItem
-                icon={Mail}
-                label={contactInfo.email.label}
-                value={contactInfo.email.value}
-                href={contactInfo.email.href}
-              />
-              <ContactItem
-                icon={MapPin}
-                label={contactInfo.location.label}
-                value={contactInfo.location.value}
-              />
+            <div className="bg-gradient-to-br from-comefyr-blue to-comefyr-green p-6 text-white sm:p-10 lg:col-span-2">
+              <h3 className="font-display text-lg font-bold">Atención institucional</h3>
+              <div className="mt-2 h-0.5 w-10 rounded-full bg-comefyr-gold" aria-hidden="true" />
+              <p className="mt-3 text-sm leading-relaxed text-white/80">
+                Estamos disponibles para orientarte sobre cursos, membresía y avales académicos.
+              </p>
 
-              <div className="pt-4">
-                <h3 className="text-sm font-bold uppercase tracking-wide text-comefyr-blue">
+              <div className="mt-6 space-y-1">
+                <ContactItem
+                  light
+                  icon={MessageCircle}
+                  label={contactInfo.whatsapp.label}
+                  value={contactInfo.whatsapp.value}
+                  href={contactInfo.whatsapp.href}
+                />
+                <ContactItem
+                  light
+                  icon={Mail}
+                  label={contactInfo.email.label}
+                  value={contactInfo.email.value}
+                  href={contactInfo.email.href}
+                />
+                <ContactItem
+                  light
+                  icon={MapPin}
+                  label={contactInfo.location.label}
+                  value={contactInfo.location.value}
+                />
+              </div>
+
+              <div className="mt-6 border-t border-white/15 pt-6">
+                <h4 className="text-xs font-bold uppercase tracking-wide text-comefyr-gold">
                   Redes sociales
-                </h3>
+                </h4>
                 <ul className="mt-3 space-y-2">
                   {contactInfo.socials.map((social) => (
                     <li key={social.label}>
                       <a
                         href={social.href}
-                        className="text-sm font-medium text-comefyr-muted transition-colors hover:text-comefyr-olive"
+                        className="text-sm font-medium text-white/80 transition-colors duration-250 hover:text-white"
                       >
                         {social.label}
                       </a>
@@ -126,22 +147,34 @@ export default function ContactSection() {
   )
 }
 
-function ContactItem({ icon: Icon, label, value, href }) {
+function ContactItem({ icon: Icon, label, value, href, light = false }) {
   const inner = (
     <div className="flex items-start gap-3 py-3">
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white shadow-sm">
-        <Icon className="h-4 w-4 text-comefyr-blue" aria-hidden="true" />
+      <div
+        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${
+          light ? 'bg-white/10' : 'bg-white shadow-sm'
+        }`}
+      >
+        <Icon className={`h-4 w-4 ${light ? 'text-white' : 'text-comefyr-blue'}`} aria-hidden="true" />
       </div>
       <div>
-        <p className="text-xs font-medium uppercase tracking-wide text-comefyr-muted">{label}</p>
-        <p className="mt-0.5 font-semibold text-comefyr-blue">{value}</p>
+        <p
+          className={`text-xs font-medium uppercase tracking-wide ${
+            light ? 'text-white/60' : 'text-comefyr-muted'
+          }`}
+        >
+          {label}
+        </p>
+        <p className={`mt-0.5 font-semibold ${light ? 'text-white' : 'text-comefyr-blue'}`}>
+          {value}
+        </p>
       </div>
     </div>
   )
 
   if (href) {
     return (
-      <a href={href} className="block transition-opacity hover:opacity-80">
+      <a href={href} className="block transition-opacity duration-250 hover:opacity-85">
         {inner}
       </a>
     )

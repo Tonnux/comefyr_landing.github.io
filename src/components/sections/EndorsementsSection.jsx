@@ -1,45 +1,55 @@
+import { sectionEyebrows } from '../../data/siteContent'
+import { endorsementBenefits } from '../../data/endorsements'
+import { useInView } from '../../hooks/useInView'
 import { endorsementIcons } from '../../utils/icons'
 import { getWhatsAppEndorsementsUrl } from '../../utils/whatsapp'
-import { endorsementBenefits } from '../../data/endorsements'
 import Button from '../ui/Button'
+import SectionHeader from '../ui/SectionHeader'
 
 // Avales — sección informativa institucional sin formulario
 export default function EndorsementsSection() {
+  const [ref, isInView] = useInView()
+
   return (
     <section
       id="avales"
       className="relative overflow-hidden bg-gradient-to-br from-comefyr-blue via-comefyr-blue to-comefyr-green section-padding"
     >
       <div className="pointer-events-none absolute -right-20 top-0 h-80 w-80 rounded-full bg-comefyr-olive/10 blur-3xl" />
+      <div className="pointer-events-none absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-comefyr-green/15 blur-3xl" />
 
-      <div className="relative mx-auto max-w-4xl text-center text-white">
-        <h2 className="text-3xl font-bold sm:text-4xl">Avales académicos COMEFYR</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/85">
-          Respaldamos cursos, diplomados, simposios y eventos académicos relacionados con
-          medicina física, rehabilitación y electrodiagnóstico.
-        </p>
+      <div className="relative mx-auto max-w-5xl">
+        <SectionHeader
+          light
+          eyebrow={sectionEyebrows.endorsements}
+          title="Avales académicos COMEFYR"
+          subtitle="Respaldamos cursos, diplomados, simposios y eventos académicos relacionados con medicina física, rehabilitación y electrodiagnóstico."
+        />
 
-        <ul className="mt-10 space-y-4 text-left">
+        <div
+          ref={ref}
+          className={`fade-in-section grid gap-4 sm:grid-cols-2 ${isInView ? 'is-visible' : ''}`}
+        >
           {endorsementBenefits.map((benefit) => {
             const Icon = endorsementIcons[benefit.icon] || endorsementIcons['shield-check']
             return (
-              <li
+              <article
                 key={benefit.id}
-                className="flex items-start gap-4 rounded-xl bg-white/5 p-4 backdrop-blur-sm"
+                className="flex items-start gap-4 rounded-card-lg border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-250 hover:border-white/20 hover:bg-white/10"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
                   <Icon className="h-5 w-5 text-comefyr-gold" aria-hidden="true" />
                 </div>
-                <div>
-                  <p className="font-semibold">{benefit.title}</p>
-                  <p className="mt-0.5 text-sm text-white/75">{benefit.description}</p>
+                <div className="text-left text-white">
+                  <h3 className="font-display font-semibold">{benefit.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-white/75">{benefit.description}</p>
                 </div>
-              </li>
+              </article>
             )
           })}
-        </ul>
+        </div>
 
-        <div className="mt-10">
+        <div className="mt-10 text-center">
           <Button
             href={getWhatsAppEndorsementsUrl()}
             variant="gold"

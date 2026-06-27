@@ -14,4 +14,8 @@ export const sectionEyebrows = {
   carousel: 'Vida académica COMEFYR',
   topics: 'Áreas de formación',
   courses: 'Catálogo académico',
+  membership: 'Membresía 2026',
+  endorsements: 'Respaldo institucional',
+  community: 'Red profesional',
+  contact: 'Atención institucional',
 }

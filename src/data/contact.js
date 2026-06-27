@@ -1,7 +1,7 @@
 // Contacto — futura fuente: Supabase o configuración del sitio
 export const contactSection = {
   title: 'Contáctanos',
-  subtitle: 'Escríbenos para información sobre cursos, membresía, avales o eventos.',
+  subtitle: 'Escríbenos para recibir orientación sobre cursos, membresía o avales académicos.',
 }
 
 export const contactInfo = {
