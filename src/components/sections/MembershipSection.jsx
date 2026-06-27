@@ -7,25 +7,17 @@ import {
   membershipSection,
   membershipSteps,
   paymentFeatures,
-  profileOptions,
 } from '../../data/membership'
 import { siteConfig } from '../../data/siteConfig'
 import { ANCHORS } from '../../utils/links'
+import { getWhatsAppMembershipUrl } from '../../utils/whatsapp'
 import Button from '../ui/Button'
-import FormSuccess from '../ui/FormSuccess'
-import Input from '../ui/Input'
 
-// Membresía — flujo claro: explicación → planes → requisitos → proceso → formulario → pago
+// Membresía — explicación, planes, requisitos, proceso y formas de pago (sin formulario)
 export default function MembershipSection() {
-  const [submitted, setSubmitted] = useState(false)
   const [copied, setCopied] = useState(false)
 
   const bankText = `Banco: ${bankInfo.bank}\nCLABE: ${bankInfo.clabe}\nCuenta: ${bankInfo.account}\nRazón social: ${bankInfo.businessName}`
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setSubmitted(true)
-  }
 
   const copyBankData = async () => {
     try {
@@ -40,7 +32,6 @@ export default function MembershipSection() {
   return (
     <section id="membresia" className="bg-white section-padding">
       <div className="mx-auto max-w-7xl">
-        {/* 1. Encabezado + botones principales */}
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold text-comefyr-blue sm:text-4xl">
             {membershipSection.title}
@@ -49,7 +40,12 @@ export default function MembershipSection() {
             {membershipSection.subtitle}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href={ANCHORS.registroSocio} size="lg">
+            <Button
+              href={getWhatsAppMembershipUrl()}
+              size="lg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Quiero ser socio COMEFYR
             </Button>
             <Button href={siteConfig.membershipStatusUrl} variant="secondary" size="lg">
@@ -58,7 +54,6 @@ export default function MembershipSection() {
           </div>
         </div>
 
-        {/* 2. Cards de membresía */}
         <div className="mt-14 grid gap-6 sm:grid-cols-2">
           {membershipPlans.map((plan) => (
             <div
@@ -74,7 +69,6 @@ export default function MembershipSection() {
           ))}
         </div>
 
-        {/* 3. Requisitos */}
         <div className="mt-12 rounded-card-lg border border-gray-100 bg-comefyr-ice p-8 shadow-card">
           <h3 className="text-xl font-bold text-comefyr-blue">Requisitos para registrarte como socio</h3>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -87,7 +81,6 @@ export default function MembershipSection() {
           </ul>
         </div>
 
-        {/* 4. Proceso en 4 pasos */}
         <div className="mt-12">
           <h3 className="mb-8 text-center text-xl font-bold text-comefyr-blue">
             Proceso de membresía
@@ -108,47 +101,12 @@ export default function MembershipSection() {
           </div>
         </div>
 
-        {/* 5. Formulario de registro */}
-        <div
-          id="registro-socio"
-          className="mt-12 rounded-card-lg border border-gray-100 bg-comefyr-soft p-6 shadow-card sm:p-10"
-        >
-          <h3 className="text-xl font-bold text-comefyr-blue">Regístrate como socio</h3>
-          <p className="mt-2 text-sm text-comefyr-muted">
-            Completa tus datos para iniciar el proceso de membresía.
-          </p>
-
-          {submitted ? (
-            <div className="mt-6">
-              <FormSuccess message="Gracias por registrarte. Te contactaremos pronto con los siguientes pasos." />
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="mt-8 grid gap-4 sm:grid-cols-2">
-              <Input label="Nombre completo" name="nombre" required />
-              <Input label="Correo electrónico" name="email" type="email" required />
-              <Input label="Teléfono" name="telefono" type="tel" required />
-              <Input label="Institución de procedencia" name="institucion" required />
-              <Input label="Perfil" name="perfil" as="select" options={profileOptions} required />
-              <Input label="Ciudad de procedencia" name="ciudad" required />
-              <div className="sm:col-span-2">
-                <Button type="submit" size="lg" className="w-full sm:w-auto">
-                  Quiero ser socio COMEFYR
-                </Button>
-              </div>
-            </form>
-          )}
-        </div>
-
-        {/* 6. Formas de pago */}
         <div id="formas-pago" className="mt-12">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
             <h3 className="flex items-center gap-2 text-xl font-bold text-comefyr-blue">
               <CreditCard className="h-5 w-5" aria-hidden="true" />
               Formas de pago
             </h3>
-            <Button href={ANCHORS.formasPago} variant="ghost" size="sm">
-              Ver formas de pago
-            </Button>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-3">

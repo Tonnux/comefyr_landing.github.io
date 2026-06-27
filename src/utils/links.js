@@ -4,13 +4,14 @@ export const ANCHORS = {
   eventos: '#eventos',
   tematicas: '#tematicas',
   cursos: '#cursos',
-  todosCursos: '#todos-cursos',
+  todosCursos: '#cursos',
   avales: '#avales',
   mesaDirectiva: '#mesa-directiva',
   membresia: '#membresia',
   registroSocio: '#registro-socio',
   formasPago: '#formas-pago',
-  asociados: '#asociados',
+  comunidad: '#comunidad',
+  asociados: '#comunidad',
   contacto: '#contacto',
 }
 

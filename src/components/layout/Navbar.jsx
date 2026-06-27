@@ -24,6 +24,9 @@ export default function Navbar() {
     }
   }, [isOpen])
 
+  const closeMenu = () => setIsOpen(false)
+  const toggleMenu = () => setIsOpen((open) => !open)
+
   return (
     <>
       <header
@@ -40,7 +43,6 @@ export default function Navbar() {
             />
           </a>
 
-          {/* Menú escritorio — centrado */}
           <ul className="hidden flex-1 items-center justify-center gap-0.5 lg:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -54,7 +56,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Iniciar sesión — siempre visible, fuera del menú hamburguesa */}
           <div className="ml-auto flex items-center gap-2 sm:gap-3 lg:ml-0">
             <Button
               href={siteConfig.loginUrl}
@@ -68,7 +69,7 @@ export default function Navbar() {
             <button
               type="button"
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-gray-100 text-comefyr-blue transition-colors hover:border-comefyr-olive/30 hover:bg-comefyr-ice lg:hidden"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={toggleMenu}
               aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
               aria-expanded={isOpen}
             >
@@ -78,30 +79,41 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Overlay + panel móvil */}
-      {isOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden" onClick={() => setIsOpen(false)} aria-hidden="true">
-          <div className="absolute inset-0 bg-comefyr-blue/20 backdrop-blur-sm" />
-          <div
-            className="absolute inset-x-0 top-[72px] mx-3 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl sm:top-[80px] sm:mx-4"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <ul className="divide-y divide-gray-50 p-2">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="block rounded-xl px-4 py-3.5 text-base font-medium text-comefyr-blue transition-colors hover:bg-comefyr-ice hover:text-comefyr-olive"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div
+        className={`fixed inset-0 z-40 lg:hidden ${
+          isOpen ? 'pointer-events-auto' : 'pointer-events-none'
+        }`}
+        aria-hidden={!isOpen}
+      >
+        <div
+          className={`absolute inset-0 bg-comefyr-blue/20 backdrop-blur-sm transition-opacity duration-250 ${
+            isOpen ? 'opacity-100 ease-out' : 'opacity-0 ease-in'
+          }`}
+          onClick={closeMenu}
+        />
+        <div
+          className={`absolute inset-x-0 top-[72px] mx-3 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl transition-all duration-250 sm:top-[80px] sm:mx-4 ${
+            isOpen
+              ? 'translate-y-0 scale-100 opacity-100 ease-out'
+              : '-translate-y-2 scale-[0.98] opacity-0 ease-in'
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <ul className="divide-y divide-gray-50 p-2">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="block rounded-xl px-4 py-3.5 text-base font-medium text-comefyr-blue transition-colors hover:bg-comefyr-ice hover:text-comefyr-olive"
+                  onClick={closeMenu}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-      )}
+      </div>
     </>
   )
 }

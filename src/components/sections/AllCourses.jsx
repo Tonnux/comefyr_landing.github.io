@@ -11,7 +11,7 @@ const INITIAL_COUNT = 6
 // Catálogo completo con buscador ancho y cards compactas
 export default function AllCourses() {
   const [query, setQuery] = useState('')
-  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT)
+  const [expanded, setExpanded] = useState(false)
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase().trim()
@@ -21,11 +21,11 @@ export default function AllCourses() {
     )
   }, [query])
 
-  const visible = filtered.slice(0, visibleCount)
-  const hasMore = visibleCount < filtered.length
+  const visible = expanded ? filtered : filtered.slice(0, INITIAL_COUNT)
+  const canToggle = filtered.length > INITIAL_COUNT
 
   return (
-    <section id="todos-cursos" className="bg-comefyr-soft section-padding">
+    <section id="cursos" className="bg-comefyr-soft section-padding">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           title="Todos los cursos"
@@ -36,7 +36,7 @@ export default function AllCourses() {
           value={query}
           onChange={(e) => {
             setQuery(e.target.value)
-            setVisibleCount(INITIAL_COUNT)
+            setExpanded(false)
           }}
           placeholder="Buscar curso por nombre…"
           ariaLabel="Buscar curso por nombre"
@@ -53,10 +53,10 @@ export default function AllCourses() {
           <p className="text-center text-comefyr-muted">No se encontraron cursos.</p>
         )}
 
-        {hasMore && (
+        {canToggle && (
           <div className="mt-10 text-center">
-            <Button onClick={() => setVisibleCount((n) => n + 3)} size="lg">
-              Cargar más
+            <Button size="lg" onClick={() => setExpanded((value) => !value)}>
+              {expanded ? 'Ver menos' : 'Ver más cursos'}
             </Button>
           </div>
         )}

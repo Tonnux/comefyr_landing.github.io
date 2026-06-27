@@ -9,10 +9,23 @@ import SectionHeader from '../ui/SectionHeader'
 // Formulario de contacto y datos institucionales
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
+  const [captchaChecked, setCaptchaChecked] = useState(false)
+  const [captchaError, setCaptchaError] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    if (!captchaChecked) {
+      setCaptchaError(true)
+      return
+    }
+
     setSubmitted(true)
+  }
+
+  const handleCaptchaChange = (e) => {
+    setCaptchaChecked(e.target.checked)
+    if (e.target.checked) setCaptchaError(false)
   }
 
   return (
@@ -39,6 +52,29 @@ export default function ContactSection() {
                     <Input label="Asunto" name="asunto" required />
                   </div>
                   <Input label="Mensaje" name="mensaje" as="textarea" required />
+
+                  {/* TODO: Reemplazar captcha temporal por reCAPTCHA/hCaptcha cuando se conecte backend. */}
+                  <div className="rounded-xl border border-gray-200 bg-comefyr-soft px-4 py-4 sm:px-5">
+                    <p className="text-sm font-semibold text-comefyr-blue">
+                      Verificación de seguridad
+                    </p>
+                    <label className="mt-3 flex cursor-pointer items-start gap-3">
+                      <input
+                        type="checkbox"
+                        name="captcha"
+                        checked={captchaChecked}
+                        onChange={handleCaptchaChange}
+                        className="mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 text-comefyr-olive focus:ring-comefyr-olive/30"
+                      />
+                      <span className="text-sm text-comefyr-text">No soy un robot</span>
+                    </label>
+                    {captchaError && (
+                      <p className="mt-3 text-sm font-medium text-red-600" role="alert">
+                        Confirma la verificación de seguridad antes de enviar el mensaje.
+                      </p>
+                    )}
+                  </div>
+
                   <Button type="submit" size="lg">
                     Enviar mensaje
                   </Button>

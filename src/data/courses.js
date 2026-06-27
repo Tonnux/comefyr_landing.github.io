@@ -137,6 +137,51 @@ export const courses = [
     endorsement_label: 'Aval COMEFYR',
     detail_url: ANCHORS.contacto,
   },
+  {
+    id: 'course-10',
+    title: 'Potenciales Evocados en Rehabilitación',
+    slug: 'potenciales-evocados-rehabilitacion',
+    image_url:
+      'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&h=400&fit=crop',
+    modality: 'En línea',
+    display_date: 'Diciembre 2026',
+    start_date: '2026-12-01',
+    description: 'Aplicación clínica de potenciales evocados en neurorehabilitación.',
+    category: 'Neurofisiología Clínica',
+    featured: false,
+    endorsement_label: 'Aval COMEFYR',
+    detail_url: ANCHORS.contacto,
+  },
+  {
+    id: 'course-11',
+    title: 'Ultrasonido MSK: Fundamentos Clínicos',
+    slug: 'ultrasonido-msk-fundamentos',
+    image_url:
+      'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&h=400&fit=crop',
+    modality: 'Híbrido',
+    display_date: 'Enero 2027',
+    start_date: '2027-01-15',
+    description: 'Fundamentos del ultrasonido musculoesquelético en rehabilitación.',
+    category: 'Ultrasonido Músculo Esquelético',
+    featured: false,
+    endorsement_label: null,
+    detail_url: ANCHORS.contacto,
+  },
+  {
+    id: 'course-12',
+    title: 'Dolor Crónico: Enfoque Multidisciplinario',
+    slug: 'dolor-cronico-multidisciplinario',
+    image_url:
+      'https://images.unsplash.com/photo-1579684385127-1ef15b5a0959?w=600&h=400&fit=crop',
+    modality: 'En línea',
+    display_date: 'Febrero 2027',
+    start_date: '2027-02-01',
+    description: 'Estrategias integrales para el manejo del dolor crónico.',
+    category: 'Dolor y Rehabilitación',
+    featured: false,
+    endorsement_label: 'Aval COMEFYR',
+    detail_url: ANCHORS.contacto,
+  },
 ]
 
 export const featuredCourses = courses.filter((course) => course.featured)

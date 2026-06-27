@@ -56,7 +56,7 @@ export default function CourseCard({ course, variant = 'default' }) {
 
         <div className="mt-auto pt-4">
           <Button href={getCourseDetailUrl(course)} size="sm" className="w-full">
-            Ver detalles
+            Ver curso
           </Button>
         </div>
       </div>

@@ -1,24 +1,9 @@
-// Asociados y redes — futura fuente: Supabase
+// Comunidad y redes — futura fuente: Supabase
 export const associatesSection = {
-  title: 'Asociados COMEFYR',
+  title: 'Comunidad COMEFYR',
   subtitle:
-    'Profesionales, médicos especialistas, residentes y miembros activos forman parte de nuestra comunidad académica y profesional.',
+    'Profesionales, médicos especialistas, residentes y participantes forman parte de nuestra comunidad académica y profesional.',
 }
-
-export const heroPhotos = [
-  {
-    id: 'hero-event',
-    src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&h=600&fit=crop',
-    alt: 'Congreso y evento académico COMEFYR',
-    label: 'Eventos académicos',
-  },
-  {
-    id: 'hero-community',
-    src: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&h=600&fit=crop',
-    alt: 'Comunidad de asociados y profesionales de la salud',
-    label: 'Comunidad COMEFYR',
-  },
-]
 
 export const socialNetworks = [
   {
@@ -49,13 +34,12 @@ export const socialNetworks = [
     gradient: 'from-blue-600/80 to-blue-900/90',
   },
   {
-    id: 'social-community',
-    name: 'Asociados COMEFYR',
-    metric: '+500',
-    metricLabel: 'Asociados activos',
-    href: '#asociados',
-    icon: 'users',
-    gradient: 'from-comefyr-olive/90 to-comefyr-green/90',
-    wide: true,
+    id: 'social-linkedin',
+    name: 'LinkedIn',
+    metric: '+900',
+    metricLabel: 'Conexiones',
+    href: '#',
+    icon: 'linkedin',
+    gradient: 'from-sky-600/80 to-blue-900/90',
   },
 ]

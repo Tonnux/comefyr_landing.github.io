@@ -32,7 +32,7 @@ export const membershipRequirements = [
 ]
 
 export const membershipSteps = [
-  { step: 1, title: 'Regístrate como socio', description: 'Completa el formulario con tus datos profesionales.' },
+  { step: 1, title: 'Regístrate como socio', description: 'Contáctanos por WhatsApp para iniciar tu registro.' },
   { step: 2, title: 'Realiza tu pago de membresía', description: 'Transfiere el monto correspondiente a tu perfil.' },
   { step: 3, title: 'Envía tu comprobante', description: 'Comparte tu comprobante de pago para validación.' },
   { step: 4, title: 'Espera validación de tu estatus', description: 'Recibirás confirmación de tu membresía activa.' },

@@ -4,6 +4,7 @@ import {
   Baby,
   BadgeCheck,
   BookOpen,
+  Bone,
   Brain,
   Calendar,
   CalendarDays,
@@ -13,14 +14,18 @@ import {
   Handshake,
   HeartPulse,
   Instagram,
+  Linkedin,
+  Microscope,
   Presentation,
   QrCode,
+  ScanLine,
   ShieldCheck,
   Users,
+  Wind,
   Youtube,
+  Zap,
 } from 'lucide-react'
 
-// Íconos para indicadores de confianza
 export const statIcons = {
   calendar: Calendar,
   users: Users,
@@ -28,7 +33,6 @@ export const statIcons = {
   award: Award,
 }
 
-// Íconos para temáticas académicas
 export const topicIcons = {
   brain: Brain,
   activity: Activity,
@@ -36,16 +40,20 @@ export const topicIcons = {
   baby: Baby,
   'graduation-cap': GraduationCap,
   'calendar-days': CalendarDays,
+  bone: Bone,
+  zap: Zap,
+  scan: ScanLine,
+  wind: Wind,
+  microscope: Microscope,
+  'book-open': BookOpen,
 }
 
-// Íconos para pilares institucionales (Acerca de)
 export const aboutIcons = {
   'book-open': BookOpen,
   award: Award,
   users: Users,
 }
 
-// Íconos para beneficios de avales
 export const endorsementIcons = {
   'shield-check': ShieldCheck,
   'badge-check': BadgeCheck,
@@ -54,10 +62,10 @@ export const endorsementIcons = {
   handshake: Handshake,
 }
 
-// Íconos para redes sociales y comunidad
 export const socialIcons = {
   youtube: Youtube,
   instagram: Instagram,
   facebook: Facebook,
+  linkedin: Linkedin,
   users: Users,
 }
