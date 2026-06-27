@@ -1,27 +1,27 @@
-// Indicadores de confianza — futura fuente: Supabase o CMS
+// Indicadores de confianza — copy institucional sin cifras no confirmadas
 export const trustStats = [
   {
-    id: 'years',
-    value: '+10',
-    label: 'años de trayectoria',
+    id: 'trajectory',
+    title: 'Trayectoria académica',
+    description: 'Compromiso con la excelencia en medicina física y rehabilitación.',
     icon: 'calendar',
   },
   {
-    id: 'doctors',
-    value: '+500',
-    label: 'médicos capacitados',
+    id: 'community',
+    title: 'Comunidad médica especializada',
+    description: 'Especialistas, residentes y profesionales de la salud.',
     icon: 'users',
   },
   {
-    id: 'events',
-    value: '+50',
-    label: 'eventos académicos',
+    id: 'training',
+    title: 'Formación continua',
+    description: 'Cursos, diplomados y actividades de actualización profesional.',
     icon: 'presentation',
   },
   {
     id: 'endorsements',
-    value: 'Avales',
-    label: 'académicos',
+    title: 'Avales académicos',
+    description: 'Respaldo institucional para eventos y programas formativos.',
     icon: 'award',
   },
 ]

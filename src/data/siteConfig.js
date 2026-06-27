@@ -9,7 +9,7 @@ export const siteConfig = {
   // Consulta de estatus de membresía (futura ruta real)
   membershipStatusUrl: ROUTES.membershipStatus,
   heroImage:
-    'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&h=700&fit=crop',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&h=700&fit=crop&q=80',
   whatsappMessage:
     'Hola, quiero información sobre cursos, membresía o avales COMEFYR.',
   whatsappPhone: '5255123456789',

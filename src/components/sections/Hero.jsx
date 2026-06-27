@@ -1,57 +1,67 @@
 import Button from '../ui/Button'
+import { heroContent } from '../../data/siteContent'
 import { siteConfig } from '../../data/siteConfig'
 import { ANCHORS } from '../../utils/links'
 
-// Hero institucional — portada médica con bloque visual
+// Hero institucional — portada médica con tipografía editorial
 export default function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden bg-white section-padding pt-8 sm:pt-12">
-      {/* Bloque decorativo azul hielo */}
-      <div className="pointer-events-none absolute -right-32 top-20 hidden h-[500px] w-[500px] rounded-full bg-comefyr-ice/60 blur-3xl lg:block" />
+    <section
+      id="inicio"
+      className="relative overflow-hidden bg-white bg-hero-pattern section-padding pt-10 sm:pt-14"
+    >
+      <div className="pointer-events-none absolute -left-24 top-32 hidden h-72 w-72 rounded-full bg-comefyr-ice/80 blur-3xl lg:block" />
+      <div className="pointer-events-none absolute -right-32 top-16 hidden h-[480px] w-[480px] rounded-full bg-comefyr-blue/[0.04] blur-3xl lg:block" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-comefyr-green/20 bg-comefyr-ice px-4 py-1.5 text-sm font-semibold text-comefyr-green">
-            <span className="h-1.5 w-1.5 rounded-full bg-comefyr-olive" />
-            Formación médica continua
+          <span className="inline-flex items-center gap-2 rounded-full border border-comefyr-green/20 bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-comefyr-green shadow-sm backdrop-blur-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-comefyr-olive" aria-hidden="true" />
+            {heroContent.eyebrow}
           </span>
 
-          <h1 className="mt-6 text-4xl font-extrabold leading-[1.15] tracking-tight text-comefyr-blue sm:text-5xl lg:text-[3.25rem]">
-            <span className="text-comefyr-olive">Formación médica continua</span>
-            {' '}con{' '}
-            <span className="underline decoration-comefyr-gold decoration-4 underline-offset-4">
-              respaldo profesional
-            </span>
+          <h1 className="mt-6 font-display text-4xl font-bold leading-[1.12] tracking-tight text-comefyr-blue sm:text-5xl lg:text-[3.15rem]">
+            {heroContent.title}
           </h1>
 
+          <div className="mt-5 h-1 w-14 rounded-full bg-comefyr-gold" aria-hidden="true" />
+
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-comefyr-muted">
-            Cursos, diplomados, simposios, membresías y avales académicos para
-            médicos especialistas, residentes y profesionales de la salud.
+            {heroContent.subtitle}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
             <Button href={ANCHORS.cursos} size="lg">
-              Ver cursos
+              {heroContent.primaryCta}
             </Button>
             <Button href={ANCHORS.avales} variant="secondary" size="lg">
-              Solicitar aval
+              {heroContent.secondaryCta}
             </Button>
           </div>
         </div>
 
-        {/* Imagen con marco institucional */}
         <div className="relative">
-          <div className="absolute -inset-3 rounded-[2rem] bg-comefyr-ice sm:-inset-4" />
-          <div className="relative overflow-hidden rounded-3xl border-4 border-white shadow-[0_20px_60px_rgba(0,59,113,0.15)]">
+          <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-comefyr-ice to-comefyr-soft sm:-inset-4" />
+
+          <div className="relative overflow-hidden rounded-3xl border border-white/80 shadow-institutional">
             <img
               src={siteConfig.heroImage}
-              alt="Profesionales de la salud en capacitación médica"
+              alt="Profesional de la salud en contexto de atención médica"
               className="aspect-[4/3] w-full object-cover"
             />
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-comefyr-blue/25 via-transparent to-transparent"
+              aria-hidden="true"
+            />
           </div>
-          <div className="absolute -bottom-5 -left-3 rounded-2xl border border-comefyr-gold/30 bg-white px-5 py-3 shadow-lg sm:-left-5">
-            <p className="text-2xl font-extrabold text-comefyr-olive">+500</p>
-            <p className="text-xs font-medium text-comefyr-muted">médicos capacitados</p>
+
+          <div className="absolute -bottom-4 -left-2 max-w-[220px] rounded-2xl border border-comefyr-gold/25 bg-white/95 px-5 py-4 shadow-card backdrop-blur-sm sm:-left-4">
+            <p className="font-display text-base font-bold leading-snug text-comefyr-blue">
+              {heroContent.badgeTitle}
+            </p>
+            <p className="mt-1 text-xs leading-relaxed text-comefyr-muted">
+              {heroContent.badgeSubtitle}
+            </p>
           </div>
         </div>
       </div>

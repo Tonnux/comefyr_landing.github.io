@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 import { courses } from '../../data/courses'
+import { sectionEyebrows } from '../../data/siteContent'
 import { getCourseTitle } from '../../utils/courseHelpers'
+import { useInView } from '../../hooks/useInView'
 import Button from '../ui/Button'
 import CourseCard from '../ui/CourseCard'
 import SearchInput from '../ui/SearchInput'
@@ -12,6 +14,7 @@ const INITIAL_COUNT = 6
 export default function AllCourses() {
   const [query, setQuery] = useState('')
   const [expanded, setExpanded] = useState(false)
+  const [ref, isInView] = useInView()
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase().trim()
@@ -25,9 +28,10 @@ export default function AllCourses() {
   const canToggle = filtered.length > INITIAL_COUNT
 
   return (
-    <section id="cursos" className="bg-comefyr-soft section-padding">
+    <section id="cursos" className="bg-white section-padding">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
+          eyebrow={sectionEyebrows.courses}
           title="Todos los cursos"
           subtitle="Explora nuestro catálogo completo de formación médica continua."
         />
@@ -43,7 +47,10 @@ export default function AllCourses() {
           className="mb-10"
         />
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          ref={ref}
+          className={`fade-in-section grid gap-5 sm:grid-cols-2 lg:grid-cols-3 ${isInView ? 'is-visible' : ''}`}
+        >
           {visible.map((course) => (
             <CourseCard key={course.id} course={course} variant="compact" />
           ))}

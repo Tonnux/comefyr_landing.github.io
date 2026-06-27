@@ -25,7 +25,7 @@ export default function SearchInput({
   return (
     <div className={`relative ${className}`}>
       <Search
-        className={`absolute top-1/2 -translate-y-1/2 text-comefyr-muted ${iconSizes[size]}`}
+        className={`absolute top-1/2 -translate-y-1/2 text-comefyr-muted transition-colors duration-250 ${iconSizes[size]}`}
         aria-hidden="true"
       />
       <input
@@ -33,7 +33,7 @@ export default function SearchInput({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className={`w-full rounded-xl border border-gray-200 ${bgClass} text-comefyr-text placeholder:text-comefyr-muted/60 focus:border-comefyr-blue focus:outline-none focus:ring-2 focus:ring-comefyr-blue/20 ${sizes[size]}`}
+        className={`w-full rounded-2xl border border-comefyr-blue/10 ${bgClass} text-comefyr-text shadow-sm placeholder:text-comefyr-muted/60 transition-all duration-250 focus:border-comefyr-olive/50 focus:outline-none focus:ring-2 focus:ring-comefyr-olive/15 ${sizes[size]}`}
         aria-label={ariaLabel}
       />
     </div>

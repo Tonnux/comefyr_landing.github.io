@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -27,6 +27,41 @@
     [id] {
       scroll-margin-top: 6.5rem;
     }
+  }
+}
+
+@layer components {
+  /* Eyebrow institucional sobre títulos de sección */
+  .section-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-comefyr-olive;
+  }
+
+  /* Línea decorativa dorada bajo el título */
+  .section-title-divider {
+    @apply mx-auto mt-4 h-0.5 w-12 rounded-full bg-comefyr-gold;
+  }
+
+  .section-title-divider-left {
+    @apply mx-0;
+  }
+
+  /* Fade-in sobrio al entrar la sección al viewport */
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.55s ease-out,
+      transform 0.55s ease-out;
+  }
+
+  .fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Chip de categoría o modalidad en cards */
+  .chip-institutional {
+    @apply inline-flex items-center rounded-full border border-comefyr-blue/10 bg-comefyr-ice px-2.5 py-0.5 text-xs font-medium text-comefyr-blue;
   }
 }
 
