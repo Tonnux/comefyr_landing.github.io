@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { topics } from '../../data/topics'
 import { sectionEyebrows } from '../../data/siteContent'
+import { centeredLastGridItem } from '../../utils/gridHelpers'
 import { useInView } from '../../hooks/useInView'
 import Button from '../ui/Button'
 import SectionHeader from '../ui/SectionHeader'
@@ -33,20 +34,23 @@ export default function TopicsSection() {
           ref={ref}
           className={`fade-in-section grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3 ${isInView ? 'is-visible' : ''}`}
         >
-          {visibleTopics.map((topic) => (
-            <TopicCard
+          {visibleTopics.map((topic, index) => (
+            <div
               key={topic.id}
-              topic={topic}
-              isExpanded={expandedTopicId === topic.id}
-              onToggle={handleToggleTopic}
-            />
+              className={centeredLastGridItem(index, visibleTopics.length, { sm: 2, lg: 3 })}
+            >
+              <TopicCard
+                topic={topic}
+                isExpanded={expandedTopicId === topic.id}
+                onToggle={handleToggleTopic}
+              />
+            </div>
           ))}
         </div>
 
         {topics.length > INITIAL_COUNT && (
           <div className="mt-8 text-center">
             <Button
-              variant="secondary"
               size="lg"
               onClick={() => {
                 setShowAll((value) => !value)

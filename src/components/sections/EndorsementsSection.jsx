@@ -1,6 +1,7 @@
 import { sectionEyebrows } from '../../data/siteContent'
 import { endorsementBenefits } from '../../data/endorsements'
 import { useInView } from '../../hooks/useInView'
+import { centeredLastGridItem } from '../../utils/gridHelpers'
 import { endorsementIcons } from '../../utils/icons'
 import { getWhatsAppEndorsementsUrl } from '../../utils/whatsapp'
 import Button from '../ui/Button'
@@ -30,15 +31,15 @@ export default function EndorsementsSection() {
           ref={ref}
           className={`fade-in-section grid gap-4 sm:grid-cols-2 ${isInView ? 'is-visible' : ''}`}
         >
-          {endorsementBenefits.map((benefit) => {
+          {endorsementBenefits.map((benefit, index) => {
             const Icon = endorsementIcons[benefit.icon] || endorsementIcons['shield-check']
             return (
               <article
                 key={benefit.id}
-                className="flex items-start gap-4 rounded-card-lg border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-250 hover:border-white/20 hover:bg-white/10"
+                className={`flex items-start gap-4 rounded-card-lg border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-250 hover:border-white/20 hover:bg-white/10 ${centeredLastGridItem(index, endorsementBenefits.length, { sm: 2 })}`}
               >
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
-                  <Icon className="h-5 w-5 text-comefyr-gold" aria-hidden="true" />
+                  <Icon className="h-5 w-5 text-comefyr-gold drop-shadow-sm" aria-hidden="true" />
                 </div>
                 <div className="text-left text-white">
                   <h3 className="font-display font-semibold">{benefit.title}</h3>
@@ -52,7 +53,6 @@ export default function EndorsementsSection() {
         <div className="mt-10 text-center">
           <Button
             href={getWhatsAppEndorsementsUrl()}
-            variant="gold"
             size="lg"
             target="_blank"
             rel="noopener noreferrer"

@@ -80,7 +80,7 @@ export default function PhotoCarousel() {
               onClick={() => goTo(index)}
               className={`h-1.5 rounded-full transition-all duration-250 ${
                 index === current
-                  ? 'w-8 bg-comefyr-olive'
+                  ? 'w-8 bg-comefyr-gold'
                   : 'w-1.5 bg-comefyr-blue/20 hover:bg-comefyr-blue/40'
               }`}
               aria-label={`Ir a foto ${index + 1}`}

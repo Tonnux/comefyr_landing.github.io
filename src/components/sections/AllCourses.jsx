@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { courses } from '../../data/courses'
 import { sectionEyebrows } from '../../data/siteContent'
 import { getCourseTitle } from '../../utils/courseHelpers'
+import { centeredLastGridItem } from '../../utils/gridHelpers'
 import { useInView } from '../../hooks/useInView'
 import Button from '../ui/Button'
 import CourseCard from '../ui/CourseCard'
@@ -51,8 +52,13 @@ export default function AllCourses() {
           ref={ref}
           className={`fade-in-section grid gap-5 sm:grid-cols-2 lg:grid-cols-3 ${isInView ? 'is-visible' : ''}`}
         >
-          {visible.map((course) => (
-            <CourseCard key={course.id} course={course} variant="compact" />
+          {visible.map((course, index) => (
+            <div
+              key={course.id}
+              className={centeredLastGridItem(index, visible.length, { sm: 2, lg: 3 })}
+            >
+              <CourseCard course={course} variant="compact" />
+            </div>
           ))}
         </div>
 

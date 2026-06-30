@@ -49,7 +49,7 @@ export default function FloatingButtons() {
       <button
         type="button"
         onClick={() => setChatOpen(!chatOpen)}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-comefyr-blue text-white shadow-[0_4px_20px_rgba(0,59,113,0.35)] transition-transform hover:scale-105"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-comefyr-blue text-white shadow-[0_4px_20px_rgba(3,49,89,0.35)] transition-transform hover:scale-105"
         aria-label="Abrir asistente COMEFYR"
       >
         <Bot className="h-6 w-6" />

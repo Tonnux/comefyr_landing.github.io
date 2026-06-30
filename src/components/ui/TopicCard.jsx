@@ -11,8 +11,8 @@ export default function TopicCard({ topic, isExpanded, onToggle }) {
     <article
       className={`group flex h-full flex-col overflow-hidden rounded-card-lg border bg-white shadow-card transition-all duration-250 ${
         isExpanded
-          ? 'border-comefyr-olive/40 shadow-card-hover ring-1 ring-comefyr-olive/20'
-          : 'border-gray-100/90 hover:border-comefyr-olive/30 hover:shadow-card-hover'
+          ? 'border-comefyr-gold/40 shadow-card-hover ring-1 ring-comefyr-gold/20'
+          : 'border-gray-100/90 hover:border-comefyr-gold/30 hover:shadow-card-hover'
       }`}
     >
       <button
@@ -24,7 +24,7 @@ export default function TopicCard({ topic, isExpanded, onToggle }) {
       >
         <div
           className={`flex flex-1 flex-col border-l-4 p-6 transition-colors duration-250 ${
-            isExpanded ? 'border-l-comefyr-olive bg-comefyr-ice/20' : 'border-l-transparent'
+            isExpanded ? 'border-l-comefyr-gold bg-comefyr-soft/80' : 'border-l-transparent'
           }`}
         >
           <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-comefyr-ice transition-colors duration-250 group-hover:bg-white">
@@ -38,11 +38,11 @@ export default function TopicCard({ topic, isExpanded, onToggle }) {
         </div>
 
         <div className="flex items-center justify-between border-t border-comefyr-blue/5 bg-comefyr-ice/50 px-6 py-3 transition-colors duration-250 group-hover:bg-comefyr-ice/80">
-          <span className="text-xs font-semibold uppercase tracking-wide text-comefyr-green">
+          <span className="text-xs font-semibold uppercase tracking-wide text-comefyr-gold">
             {isExpanded ? 'Ocultar cursos' : 'Explorar'}
           </span>
           <ChevronRight
-            className={`h-4 w-4 text-comefyr-muted transition-transform duration-250 group-hover:text-comefyr-olive ${
+            className={`h-4 w-4 text-comefyr-muted transition-transform duration-250 group-hover:text-comefyr-gold ${
               isExpanded ? 'rotate-90' : 'group-hover:translate-x-0.5'
             }`}
             aria-hidden="true"
@@ -57,7 +57,7 @@ export default function TopicCard({ topic, isExpanded, onToggle }) {
         }`}
         aria-hidden={!isExpanded}
       >
-        <div className="border-t border-comefyr-olive/15 bg-comefyr-ice/40 px-4 py-4 sm:px-5 sm:py-5">
+        <div className="border-t border-comefyr-gold/15 bg-comefyr-soft/80 px-4 py-4 sm:px-5 sm:py-5">
           <ul className="space-y-3">
             {topic.courses.map((course) => (
               <li

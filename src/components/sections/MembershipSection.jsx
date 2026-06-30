@@ -72,18 +72,18 @@ export default function MembershipSection() {
                   key={plan.id}
                   className={`relative flex flex-col rounded-card-lg border bg-white p-8 shadow-card transition-all duration-250 hover:shadow-card-hover ${
                     index === 0
-                      ? 'border-comefyr-olive/40 ring-1 ring-comefyr-olive/15'
+                      ? 'border-comefyr-blue/20 ring-1 ring-comefyr-blue/10'
                       : 'border-gray-100/90'
                   }`}
                 >
                   {index === 0 && (
-                    <span className="absolute -top-3 left-6 rounded-full bg-comefyr-olive px-3 py-0.5 text-xs font-semibold text-white">
+                    <span className="absolute -top-3 left-6 rounded-full bg-comefyr-blue px-3 py-0.5 text-xs font-semibold text-white">
                       Perfil principal
                     </span>
                   )}
                   <h4 className="font-display text-lg font-bold text-comefyr-blue">{plan.name}</h4>
                   <p className="mt-4">
-                    <span className="font-display text-4xl font-bold text-comefyr-olive">
+                    <span className="font-display text-4xl font-bold text-comefyr-blue">
                       {plan.price}
                     </span>
                     <span className="ml-2 text-comefyr-muted">/ {plan.period}</span>
@@ -108,7 +108,7 @@ export default function MembershipSection() {
                   key={req}
                   className="flex items-start gap-3 rounded-xl border border-comefyr-ice bg-comefyr-soft/60 px-4 py-3 text-sm text-comefyr-text"
                 >
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-comefyr-olive" aria-hidden="true" />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-comefyr-blue" aria-hidden="true" />
                   {req}
                 </li>
               ))}
@@ -123,7 +123,7 @@ export default function MembershipSection() {
             <div className="section-title-divider" aria-hidden="true" />
             <div className="relative mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               <div
-                className="pointer-events-none absolute left-0 right-0 top-5 hidden h-0.5 bg-comefyr-olive/20 lg:block"
+                className="pointer-events-none absolute left-0 right-0 top-5 hidden h-0.5 bg-comefyr-blue/15 lg:block"
                 aria-hidden="true"
               />
               {membershipSteps.map((step) => (

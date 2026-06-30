@@ -40,8 +40,8 @@ export default function CourseCard({ course, variant = 'default' }) {
           </span>
         )}
         {endorsed && (
-          <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-comefyr-gold px-2.5 py-1 text-xs font-semibold text-white shadow-sm">
-            <Award className="h-3.5 w-3.5" aria-hidden="true" />
+          <span className="absolute right-3 top-3 chip-institutional bg-white/95 backdrop-blur-sm">
+            <Award className="mr-1 h-3.5 w-3.5 text-comefyr-blue" aria-hidden="true" />
             {getCourseEndorsementLabel(course)}
           </span>
         )}

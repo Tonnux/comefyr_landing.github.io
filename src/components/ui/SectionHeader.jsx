@@ -11,7 +11,7 @@ export default function SectionHeader({
   const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left'
   const titleColor = light ? 'text-white' : 'text-comefyr-blue'
   const subtitleColor = light ? 'text-white/80' : 'text-comefyr-muted'
-  const eyebrowColor = light ? 'text-comefyr-gold' : 'text-comefyr-olive'
+  const eyebrowColor = light ? 'text-comefyr-gold' : 'text-comefyr-gold'
   const dividerClass =
     align === 'center' ? 'section-title-divider' : 'section-title-divider section-title-divider-left'
 

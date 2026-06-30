@@ -1,4 +1,4 @@
-import logo from '../../assets/logos/logo_comefyr_2.png'
+import logoFooter from '../../assets/logos/logo_comefyr_2.png'
 import {
   footerContactLinks,
   footerCourseLinks,
@@ -21,7 +21,7 @@ function FooterColumn({ title, children }) {
       <h3 className="font-display text-sm font-bold uppercase tracking-wider text-comefyr-gold">
         {title}
       </h3>
-      <div className="mt-3 h-0.5 w-8 rounded-full bg-comefyr-gold/60" aria-hidden="true" />
+      <div className="mt-3 h-0.5 w-8 rounded-full bg-comefyr-gold" aria-hidden="true" />
       <div className="mt-4">{children}</div>
     </div>
   )
@@ -30,15 +30,15 @@ function FooterColumn({ title, children }) {
 // Footer institucional — coherente con identidad visual Fase 1+2
 export default function Footer() {
   return (
-    <footer className="border-t border-comefyr-gold/20 bg-comefyr-blue text-white">
+    <footer className="border-t border-comefyr-gold/40 bg-comefyr-blue text-white">
       <div className="mx-auto max-w-7xl section-padding pb-10 pt-14">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5 lg:gap-10">
           {/* Marca */}
           <div className="space-y-5 lg:col-span-2">
             <img
-              src={logo}
+              src={logoFooter}
               alt="Logo COMEFYR"
-              className="h-12 w-auto brightness-0 invert"
+              className="h-10 w-auto max-w-[168px] object-contain object-left sm:h-11 sm:max-w-[184px]"
             />
             <p className="max-w-sm text-sm leading-relaxed text-white/80">{siteConfig.tagline}</p>
             <div className="flex flex-wrap gap-2">

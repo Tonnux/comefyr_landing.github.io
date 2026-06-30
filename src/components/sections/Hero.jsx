@@ -15,8 +15,8 @@ export default function Hero() {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-comefyr-green/20 bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-comefyr-green shadow-sm backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-comefyr-olive" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 rounded-full border border-comefyr-blue/15 bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-comefyr-blue shadow-sm backdrop-blur-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-comefyr-gold" aria-hidden="true" />
             {heroContent.eyebrow}
           </span>
 
@@ -55,7 +55,7 @@ export default function Hero() {
             />
           </div>
 
-          <div className="absolute -bottom-4 -left-2 max-w-[220px] rounded-2xl border border-comefyr-gold/25 bg-white/95 px-5 py-4 shadow-card backdrop-blur-sm sm:-left-4">
+          <div className="absolute -bottom-4 -left-2 max-w-[220px] rounded-2xl border border-comefyr-gold/40 bg-white/95 px-5 py-4 shadow-card backdrop-blur-sm sm:-left-4">
             <p className="font-display text-base font-bold leading-snug text-comefyr-blue">
               {heroContent.badgeTitle}
             </p>

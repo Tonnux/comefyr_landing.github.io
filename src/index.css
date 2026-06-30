@@ -33,7 +33,7 @@
 @layer components {
   /* Eyebrow institucional sobre títulos de sección */
   .section-eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-comefyr-olive;
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-comefyr-gold;
   }
 
   /* Línea decorativa dorada bajo el título */
@@ -61,7 +61,7 @@
 
   /* Chip de categoría o modalidad en cards */
   .chip-institutional {
-    @apply inline-flex items-center rounded-full border border-comefyr-blue/10 bg-comefyr-ice px-2.5 py-0.5 text-xs font-medium text-comefyr-blue;
+    @apply inline-flex items-center rounded-full border border-comefyr-blue/10 bg-comefyr-soft px-2.5 py-0.5 text-xs font-medium text-comefyr-blue;
   }
 }
 
